@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>SWARM — Survivor-Arena</title>
+  <meta name="description" content="SWARM: An original survivor-arena game by Dr. Md Samshad Hussain Ansari. Auto-attack, dodge huge swarms, level up, and evolve weapons.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- In-Game HUD Overlay -->
+    <div id="hud" class="overlay-screen hidden">
+      <!-- Top Full-Width XP Bar -->
+      <div id="xp-bar-container">
+        <div id="xp-fill"></div>
+        <div id="level-badge">LV 1</div>
+      </div>
+
+      <!-- HUD Header -->
+      <div id="hud-header">
+        <div id="hud-hp-box">
+          <div id="hp-bar-bg">
+            <div id="hp-fill"></div>
+          </div>
+          <span id="hp-text">100 / 100</span>
+        </div>
+
+        <div id="hud-timer">00:00</div>
+
+        <div id="hud-stats-right">
+          <div class="hud-stat"><span class="icon">💀</span> <span id="hud-kills">0</span></div>
+        </div>
+      </div>
+
+      <!-- Bottom-Left Weapons / Passives Bar -->
+      <div id="weapons-bar"></div>
+    </div>
+
+    <!-- Title Screen -->
+    <div id="title-screen" class="overlay-modal">
+      <div class="title-box">
+        <h1 class="game-logo">SWARM</h1>
+        <p class="tagline">Survive the Mathematical Swarms</p>
+        <p class="author-credits">Made by Dr. Md Samshad Hussain Ansari</p>
+
+        <div class="btn-group">
+          <button id="btn-start-run" class="btn btn-primary">Start Run</button>
+          <button id="btn-stress-test" class="btn btn-secondary">⚡ Stress Test (600 Swarm)</button>
+        </div>
+
+        <div class="controls-hint">
+          <p><strong>Keyboard:</strong> WASD / Arrow Keys · <strong>Phone:</strong> Touch & Drag Joystick</p>
+          <p>Auto-Attacking Active · Dodge & Collect Gems</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level-Up Modal -->
+    <div id="levelup-modal" class="overlay-modal hidden">
+      <div class="modal-box levelup-box">
+        <h2 class="modal-title">LEVEL UP!</h2>
+        <p class="modal-subtitle">Choose an upgrade for your arsenal</p>
+
+        <div id="upgrade-cards" class="cards-grid"></div>
+
+        <div class="modal-actions">
+          <button id="btn-reroll" class="btn btn-action">Reroll (1)</button>
+          <button id="btn-skip" class="btn btn-action">Skip (1)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pause Modal -->
+    <div id="pause-modal" class="overlay-modal hidden">
+      <div class="modal-box">
+        <h2 class="modal-title">GAME PAUSED</h2>
+        <div class="btn-group">
+          <button id="btn-resume" class="btn btn-primary">Resume</button>
+          <button id="btn-pause-quit" class="btn btn-secondary">Quit to Title</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results / Game Over Modal -->
+    <div id="results-modal" class="overlay-modal hidden">
+      <div class="modal-box results-box">
+        <h2 class="modal-title">RUN FINISHED</h2>
+
+        <div class="results-stats-grid">
+          <div class="res-stat-item">
+            <span class="label">Time Survived</span>
+            <span id="res-time" class="val">00:00</span>
+          </div>
+          <div class="res-stat-item">
+            <span class="label">Level Reached</span>
+            <span id="res-level" class="val">1</span>
+          </div>
+          <div class="res-stat-item">
+            <span class="label">Enemies Slain</span>
+            <span id="res-kills" class="val">0</span>
+          </div>
+          <div class="res-stat-item">
+            <span class="label">Gems Collected</span>
+            <span id="res-gems" class="val">0</span>
+          </div>
+        </div>
+
+        <div class="damage-breakdown">
+          <h3>Damage Breakdown</h3>
+          <div id="res-damage-chart" class="chart-container"></div>
+        </div>
+
+        <div class="btn-group">
+          <button id="btn-restart" class="btn btn-primary">Play Again</button>
+          <button id="btn-results-title" class="btn btn-secondary">Main Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
